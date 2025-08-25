@@ -423,20 +423,20 @@ task.spawn(function()
                                 ["maxPlayers"] = 40
                             }}},[2] = RemoteCodes["PartySystem"]}}
             game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer(unpack(RaidArgs))
-        elseif workspace:FindFirstChild("CharacterSelectScene") and Settings.Dungeon.EnabledBest == true then
-				game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer({
+       elseif Settings.Dungeon.EnabledBest == true then
+			game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer({
 				[1] = {"\1",{
-			                ["\3"] = "PlaySolo",
-			                partyData = {
-			                    difficulty = BestDifficulty,
-			                    mode = Settings.Dungeon.Mode,
-			                    dungeonName = BestDungeon,
-			                    tier = 1
-			                }
-			            }},
+							["\3"] = "PlaySolo",
+							partyData = {
+								difficulty = BestDifficulty,
+								mode = Settings.Dungeon.Mode,
+								dungeonName = BestDungeon,
+								tier = 1
+							}
+						}},
 				[2] ="\175"
 			})
-		end
+        end
         if not workspace:FindFirstChild("CharacterSelectScene") and Settings.AutoFarm.Enabled == true and Character == Players.LocalPlayer.Character and Character:FindFirstChild("HumanoidRootPart") then
             if Players.LocalPlayer.PlayerGui.HUD.Main.StartButton.Visible == true or Players.LocalPlayer.PlayerGui.RaidReadyCheck.Enabled == true then
                 game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer({[1] = {[utf8.char(3)] = "vote",["vote"] = true},[2] = utf8.char(28)}) --UPDATE CODE
