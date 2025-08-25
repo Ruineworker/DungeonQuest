@@ -400,13 +400,18 @@ task.spawn(function()
             game:GetService("ReplicatedStorage"):WaitForChild("remotes"):WaitForChild("sellItemEvent"):FireServer(args)
         end
         if workspace:FindFirstChild("CharacterSelectScene") and Settings.Dungeon.Enabled == true then
-            local DunArgs = {[1] = {[1] = {[1] = "\1",[2] = {["\3"] = "PlaySolo",["partyData"] = {
-                                ["difficulty"] = Settings.Dungeon.Diffculty,
-                                ["mode"] = Settings.Dungeon.Mode,
-                                ["dungeonName"] = Settings.Dungeon.Name,
-                                ["tier"] = 1,
-                            }}},[2] = RemoteCodes["PartySystem"]}}
-            game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer(unpack(DunArgs))
+            game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer({
+				[1] = {"\1",{
+			                ["\3"] = "PlaySolo",
+			                partyData = {
+			                    difficulty = Settings.Dungeon.Diffculty,
+			                    mode = Settings.Dungeon.Mode,
+			                    dungeonName = Settings.Dungeon.Name,
+			                    tier = 1
+			                }
+			            }},
+				[2] ="\175"
+			})
         elseif workspace:FindFirstChild("CharacterSelectScene") and Settings.Dungeon.RaidEnabled == true then
             local RaidArgs = {[1] = {[1] = {[1] = "\1",[2] = {["\3"] = "PlaySolo",["partyData"] = {
                                 ["difficulty"] = "Nightmare",
