@@ -424,13 +424,18 @@ task.spawn(function()
                             }}},[2] = RemoteCodes["PartySystem"]}}
             game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer(unpack(RaidArgs))
         elseif Settings.Dungeon.EnabledBest == true then
-            local DunArgs = {[1] = {[1] = {[1] = "\1",[2] = {["\3"] = "PlaySolo",["partyData"] = {
-                ["difficulty"] = BestDifficulty,
-                ["mode"] = "Normal",
-                ["dungeonName"] = BestDungeon,
-                ["tier"] = 1,
-            }}},[2] = RemoteCodes["PartySystem"]}}
-            game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer(unpack(DunArgs))
+				game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer({
+				[1] = {"\1",{
+			                ["\3"] = "PlaySolo",
+			                partyData = {
+			                    difficulty = BestDifficulty,
+			                    mode = Settings.Dungeon.Mode,
+			                    dungeonName = BestDungeon,
+			                    tier = 1
+			                }
+			            }},
+				[2] ="\175"
+			})
         end
         if not workspace:FindFirstChild("CharacterSelectScene") and Settings.AutoFarm.Enabled == true and Character == Players.LocalPlayer.Character and Character:FindFirstChild("HumanoidRootPart") then
             if Players.LocalPlayer.PlayerGui.HUD.Main.StartButton.Visible == true or Players.LocalPlayer.PlayerGui.RaidReadyCheck.Enabled == true then
