@@ -423,17 +423,17 @@ task.spawn(function()
                                 ["maxPlayers"] = 40
                             }}},[2] = RemoteCodes["PartySystem"]}}
             game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer(unpack(RaidArgs))
-       elseif Settings.Dungeon.EnabledBest == true then
-			game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer({
+        elseif Settings.Dungeon.EnabledBest == true then
+				game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer({
 				[1] = {"\1",{
-							["\3"] = "PlaySolo",
-							partyData = {
-								difficulty = BestDifficulty,
-								mode = Settings.Dungeon.Mode,
-								dungeonName = BestDungeon,
-								tier = 1
-							}
-						}},
+			                ["\3"] = "PlaySolo",
+			                partyData = {
+			                    difficulty = BestDifficulty,
+			                    mode = Settings.Dungeon.Mode,
+			                    dungeonName = BestDungeon,
+			                    tier = 1
+			                }
+			            }},
 				[2] ="\175"
 			})
         end
