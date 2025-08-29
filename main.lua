@@ -81,7 +81,7 @@ function Functions:DoSkills(RepeatCount)
             task.spawn(function()
                 if v:FindFirstChild("cooldown") and v.cooldown.Value and (v:FindFirstChild("abilityEvent") or v:FindFirstChild("spellEvent")) then
                     (v:FindFirstChild("abilityEvent") or v:FindFirstChild("spellEvent")):FireServer()
-                elseif v:FindFirstChild("cooldown") and v.cooldown.Value then
+                elseif true=true then
                     game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer({[1] = {["\t"] = v},[2] = RemoteCodes["Abilities"]})
                 end
             end)
