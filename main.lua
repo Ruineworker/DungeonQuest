@@ -79,9 +79,9 @@ function Functions:DoSkills(RepeatCount)
     for i, v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
         for i = 0,RepeatCount do
             task.spawn(function()
-                if true = true then
+                if v:FindFirstChild("cooldown") and v.cooldown.Value and (v:FindFirstChild("abilityEvent") or v:FindFirstChild("spellEvent")) then
                     (v:FindFirstChild("abilityEvent") or v:FindFirstChild("spellEvent")):FireServer()
-                elseif elseif v:FindFirstChild("cooldown") and v.cooldown.Value then then
+                elseif v:FindFirstChild("cooldown") and v.cooldown.Value then 
                     game:GetService("ReplicatedStorage"):WaitForChild("dataRemoteEvent"):FireServer({[1] = {["\t"] = v},[2] = RemoteCodes["Abilities"]})
                 end
             end)
